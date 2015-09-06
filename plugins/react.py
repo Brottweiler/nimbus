@@ -17,6 +17,12 @@ class React(Plugin):
 
         # Add more reactions here!
 
+        if re.search(r'(hause|hausemaster|hause master)', text, re.IGNORECASE):
+            response.update(name='hausemaster1')
+
+        if re.search(r'(popbob|poopboob)', text, re.IGNORECASE):
+            response.update(name='popbob')
+
         # Post reaction if we have an emoji set
         if response.get('name'):
             self.bot.sc.api_call('reactions.add', **response)
