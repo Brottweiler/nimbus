@@ -18,7 +18,7 @@ class React(Plugin):
         # Add more reactions here!
 
         if re.search(r'(hause|hausemaster|hause master)', text, re.IGNORECASE):
-            response.update(name='hausemaster2')
+            response.update(name='hause')
 
         if re.search(r'(popbob|poopboob)', text, re.IGNORECASE):
             response.update(name='popbob')
