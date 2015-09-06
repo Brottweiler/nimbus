@@ -23,6 +23,9 @@ class React(Plugin):
         if re.search(r'(popbob|poopboob)', text, re.IGNORECASE):
             response.update(name='popbob')
 
+        if re.search(r'(2b2t)', text, re.IGNORECASE):
+            response.update(name='poop')
+
         # Post reaction if we have an emoji set
         if response.get('name'):
             self.bot.sc.api_call('reactions.add', **response)
