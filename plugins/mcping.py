@@ -15,7 +15,7 @@ class MCPing(CommandPlugin):
         self.triggers = ['mcping', 'mcp']
         self.short_help = 'Ping a Minecraft server'
         self.help = self.short_help
-        self.help_example = ['!mcping us.oc.tc', '!mcping example.org:1234']
+        self.help_example = ['!mcping 2b2t.org', '!mcping example.org:1234']
 
     def on_command(self, event, response):
         args = event['text']
@@ -25,7 +25,7 @@ class MCPing(CommandPlugin):
             response.update(attachments=json.dumps([attach]))
             self.bot.sc.api_call('chat.postMessage', **response)
         else:
-            raise PluginException('No server to ping! E.g. `!mcping us.oc.tc`')
+            raise PluginException('No server to ping! E.g. `!mcping 2b2t.org`')
 
     @staticmethod
     def build_slack_attachment(server_address, data):
