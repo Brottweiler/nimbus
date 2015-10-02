@@ -29,5 +29,5 @@ class Welcome(Plugin):
             user = event['user']['id']
             response['channel'] = general_channel
             response['link_names'] = 1  # Enables linking of names
-            response['text'] = 'Welcome to the Slack team <@%s>!' % user
+            response['text'] = 'Welcome, <@%s>! You have joined 2b2t, a peaceful Christian server. \nhttps://i.imgur.com/h8IYAjd.png' % user
             self.bot.sc.api_call('chat.postMessage', **response)
