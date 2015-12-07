@@ -60,6 +60,8 @@ class ForumScraper(OCNScraper):
         soup = self.make_soup()
         url = self.url
         post_id = url.split('#')[1] if '#' in url else None
+        if post_id is None:
+            post_id = url.split('/posts/')[1] if '/posts/' in url else None
 
         d = {}
         try:
@@ -129,7 +131,7 @@ class PunishmentScraper(OCNScraper):
     def format_data(self, d):
         """ generate slack message attachment """
         a = {}
-        verb = 'punished' if d['pun_type'] == 'Ban' else 'warned'
+        verb = 'punished' if d['pun_type'] == 'Ban' or d['pun_type'] == 'Forum Ban' or d['pun_type'] == 'Kick' else 'warned'
         a['fallback'] = '%s %s by %s with reason "_%s_" (%s)' % \
                         (self.get_slack_link(d['punishee']), verb, self.get_slack_link(d['punisher']), d['reason'],
                          d['when'])
